@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SlideShow from '../SlideShow/SlideShow';
 
 
 class FindBike extends Component {
@@ -9,6 +10,7 @@ class FindBike extends Component {
             <div className="App">
                 <header>
                     <h1>Find a Bike!!!</h1>
+                    <SlideShow />
                 </header>
             </div>
         )
