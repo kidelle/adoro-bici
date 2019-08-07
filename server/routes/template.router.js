@@ -5,8 +5,16 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
-    
+router.get('/find', (req, res) => {
+    const sqlText = `SELECT * FROM "bikes";`;
+    pool.query(sqlText)
+        .then( (resonse) => {
+            res.send(response.rows);
+        })
+        .catch( (error) => {
+            console.log(`Error getting bikes. Try again later.`, error);
+            res.sendStatus(500);
+        })
 });
 
 /**

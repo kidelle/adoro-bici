@@ -10,7 +10,7 @@ CREATE TABLE bikes
     "description" VARCHAR (300) NOT NULL,
     "bike_size" VARCHAR (20) NOT NULL,
     "image" VARCHAR (150) NOT NULL,
-    "rental_rate" NUMERIC
+    "rental_rate" VARCHAR
 );
 
 CREATE TABLE customers
@@ -65,3 +65,19 @@ CREATE TABLE products
     "item_image" VARCHAR,
     "item_quantity" INTEGER
 );
+
+INSERT INTO "bikes"
+    ("type", "description", "bike_size", "image", "rental_rate")
+VALUES
+    ('Bicycle', 'Kona - Rove Street - Road Bike', 'Size: 52', 'images/bike_black.jpg', '$10/hour, $36/day'),
+    ('Bicycle', 'Peugeot - Park Street - Road Bike', 'Size: 50', 'images/bike-peugeot.jpg', '$10/hour, $36/day'),
+    ('Bicycle', 'Kona - Maple Street - Road Bike', 'Size: 48', 'images/bike_white.jpg', '$10/hour, $36/day');
+
+
+INSERT INTO "bikes"
+    ("type", "description", "bike_size", "image", "rental_rate")
+VALUES
+    ('Moped', '2015 Taotao Ruckster', 'Size: 50cc', 'images/moped_pink.jpg', '$28/hour, $105/day'),
+    ('Moped', '2006 Vespa GTS', 'Size: 50cc', 'images/moped_blue.jpg', '$28/hour, $105/day'),
+    ('Moped', '2017 Vespa GTV', 'Size: 125cc', 'images/moped_red.jpg', '$28/hour, $105/day'),
+    ('Moped', '2003 Aprilia Atlantic Maxi', 'Size: 125cc', 'images/moped_orange.jpg', '$28/hour, $105/day');
