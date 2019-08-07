@@ -5,10 +5,10 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/find', (req, res) => {
+router.get('/', (req, res) => {
     const sqlText = `SELECT * FROM "bikes";`;
     pool.query(sqlText)
-        .then( (resonse) => {
+        .then( (response) => {
             res.send(response.rows);
         })
         .catch( (error) => {

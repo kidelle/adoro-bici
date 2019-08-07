@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import SlideShow from '../SlideShow/SlideShow';
+import { connect } from 'react-redux';
 
 
 class FindBike extends Component {
 
+componentDidMount() {
+    const action = {type: 'FETCH_BIKES'};
+    this.props.dispatch(action);
+}
 
     render() {
         return (
@@ -18,4 +23,8 @@ class FindBike extends Component {
 
 }
 
-export default FindBike;
+const mapReduxStateToProps = (reduxState) => ({
+    reduxState
+});
+
+export default connect(mapReduxStateToProps)(FindBike);
