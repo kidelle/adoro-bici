@@ -10,11 +10,11 @@ class SlideShow extends Component {
         console.log(this.props.reduxState.bikes)
         return (
             <>
-           {this.props.reduxState.bikes.map((bike, i) => {
+           {this.props.reduxState.bikes.map((bikes, i) => {
                return (
                <div>
-                   <p key={bike.id}>{bike.type}{bike.description}{bike.bike_size}{bike.rental_rate} </p>
-                       <img src='https://images.unsplash.com/photo-1495031178007-13cac321fbcf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80' alt={bike.description}/>
+                   <p key={bikes.id}>{bikes.type}{bikes.description}{bikes.bike_size}{bikes.rental_rate} </p>
+                       <img src={bikes.image} alt={bikes.description}/>
                 </div>
        
                        )}
