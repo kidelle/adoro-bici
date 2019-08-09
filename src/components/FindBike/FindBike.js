@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 
 class FindBike extends Component {
 
-componentDidMount() {
-    const action = {type: 'FETCH_BIKES'};
-    this.props.dispatch(action);
-}
+    componentDidMount() {
+        const action = { type: 'FETCH_BIKES' };
+        this.props.dispatch(action);
+    }
 
     render() {
         return (

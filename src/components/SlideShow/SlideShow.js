@@ -4,13 +4,11 @@ import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-re
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
 import CardContent from '@material-ui/core/CardContent';
-import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
+
 
 const styles = muiBaseTheme => ({
     card: {
@@ -38,13 +36,7 @@ const styles = muiBaseTheme => ({
     subHeading: {
         lineHeight: 1.8
     },
-    avatar: {
-        display: "inline-block",
-        border: "2px solid white",
-        "&:not(:first-of-type)": {
-            marginLeft: -muiBaseTheme.spacing.unit
-        }
-    }
+   
 });
 class SlideShow extends Component {
 
@@ -52,11 +44,11 @@ class SlideShow extends Component {
 
     render() {
         console.log(this.props.reduxState.bikes)
-        const { classes } =this.props;
+        const { classes } = this.props;
         return (
             this.props.reduxState.bikes.map((bikes, i) =>
-            
-                
+
+
                 <Card key={i} className={classes.card}>
                     <CardMedia
                         className={classes.media}
@@ -69,9 +61,9 @@ class SlideShow extends Component {
                             className={"MuiTypography--heading"}
                             variant={"h6"}
                             gutterBottom
-                            
-                        >   
-                        {bikes.description}
+
+                        >
+                            {bikes.description}
                         </Typography>
                         <Typography
                             className={"MuiTypography--subheading"}
@@ -79,18 +71,18 @@ class SlideShow extends Component {
                         >
                             {bikes.size}
                         </Typography>
-                            <Typography
-                                className={"MuiTypography--subheading"}
-                                variant={"caption"}
-                            >
-                                {bikes.rental_rate}
-                            </Typography>
-                       
+                        <Typography
+                            className={"MuiTypography--subheading"}
+                            variant={"caption"}
+                        >
+                            {bikes.rental_rate}
+                        </Typography>
+
                     </CardContent>
                 </Card>
 
-                
-                )
+
+            )
 
             // <CarouselProvider
             // naturalSlideWidth={100}
