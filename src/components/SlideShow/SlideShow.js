@@ -8,6 +8,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
+import CardActions from '@material-ui/core/CardActions';
+import CardActionArea from '@material-ui/core/CardActionArea';
 
 
 const styles = muiBaseTheme => ({
@@ -38,9 +41,16 @@ const styles = muiBaseTheme => ({
     },
    
 });
+
+
+
 class SlideShow extends Component {
 
-
+    nextPage = () => {
+        console.log('clicked nextPage button');
+        this.props.dispatch({ type: 'SET_BIKE ', payload: 'hi' });
+        this.props.history.push('/reserve');
+    }
 
     render() {
         console.log(this.props.reduxState.bikes)
@@ -50,6 +60,7 @@ class SlideShow extends Component {
 
 
                 <Card key={i} className={classes.card}>
+                    <CardActionArea>
                     <CardMedia
                         className={classes.media}
                         image={
@@ -79,6 +90,12 @@ class SlideShow extends Component {
                         </Typography>
 
                     </CardContent>
+                    </CardActionArea>
+                    <CardActions>
+                        <Button onClick={(event) => this.nextPage()} type="submit"size="small" color="primary">
+                            Reserve This Bike
+                        </Button>
+                    </CardActions>
                 </Card>
 
 

@@ -21,6 +21,7 @@ import HomePage from '../HomePage/HomePage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import FindBike from '../FindBike/FindBike';
+import ReserveBike from '../ReserveBike/ReserveBike';
 
 import './App.css';
 
@@ -72,6 +73,11 @@ class App extends Component {
               exact
               path="/find"
               component={FindBike}
+            />
+            <Route
+              exact
+              path="/reserve"
+              component={ReserveBike}
             />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}

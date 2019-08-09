@@ -15,7 +15,7 @@ class FindBike extends Component {
             <div className="App">
                 <header>
                     <h1>Find a Bike!!!</h1>
-                    <SlideShow />
+                    <SlideShow history={this.props.history}/>
                 </header>
             </div>
         )
