@@ -17,7 +17,9 @@ class FindBike extends Component {
                     <h1>Find a Bike!!!</h1>
                     <SlideShow />
                 </header>
+                
             </div>
+            
         )
     }
 

@@ -8,11 +8,14 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
+import { ThemeProvider } from '@material-ui/styles';
+import ReserveButton from '../ReserveButton/ReserveButton';
 
 
 const styles = muiBaseTheme => ({
     card: {
-        maxWidth: 300,
+        maxWidth: 500,
         margin: muiBaseTheme.spacing.unit,
         transition: "0.3s",
         boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
@@ -36,6 +39,14 @@ const styles = muiBaseTheme => ({
     subHeading: {
         lineHeight: 1.8
     },
+    cardAction: {
+        display: "block",
+        textAlign: "initial"
+    },
+    button: {
+        margin: muiBaseTheme.spacing.unit,
+    },
+    
    
 });
 class SlideShow extends Component {
@@ -50,6 +61,7 @@ class SlideShow extends Component {
 
 
                 <Card key={i} className={classes.card}>
+                    
                     <CardMedia
                         className={classes.media}
                         image={
@@ -79,7 +91,10 @@ class SlideShow extends Component {
                         </Typography>
 
                     </CardContent>
+                    
+                    <ReserveButton />
                 </Card>
+               
 
 
             )

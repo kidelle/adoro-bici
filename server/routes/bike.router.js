@@ -20,7 +20,11 @@ router.get('/', (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
+router.post('/reserve', (req, res) => {
+    console.log('in /reserve POST:', req.body);
+    console.log(req.body);
+    const bikeToAdd = req.body;
+     
 
 });
 

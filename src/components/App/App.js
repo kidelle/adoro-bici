@@ -21,6 +21,7 @@ import HomePage from '../HomePage/HomePage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import FindBike from '../FindBike/FindBike';
+import ReservationPage from '../ReservationPage/ReservationPage';
 
 import './App.css';
 
@@ -62,6 +63,11 @@ class App extends Component {
               exact
               path="/register"
               component={RegisterPage}
+            />
+            <Route
+              exact
+              path="/reserve"
+              component={ReservationPage}
             />
             <Route
               exact
