@@ -46,9 +46,10 @@ const styles = muiBaseTheme => ({
 
 class SlideShow extends Component {
 
-    nextPage = () => {
-        console.log('clicked nextPage button');
-        this.props.dispatch({ type: 'SET_BIKE ', payload: 'hi' });
+    nextPage = (event, bikes) => {
+        console.log('CLICKED ON A BIKE', bikes);
+        console.log(bikes.id);
+        this.props.dispatch({ type: 'SHOW_BIKE', payload: bikes.id });
         this.props.history.push('/reserve');
     }
 
@@ -92,7 +93,7 @@ class SlideShow extends Component {
                     </CardContent>
                     </CardActionArea>
                     <CardActions>
-                        <Button onClick={(event) => this.nextPage()} type="submit"size="small" color="primary">
+                        <Button onClick={(event) => this.nextPage(event, bikes)} type="submit"size="small" color="primary">
                             Reserve This Bike
                         </Button>
                     </CardActions>

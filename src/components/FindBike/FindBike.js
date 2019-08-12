@@ -8,6 +8,7 @@ class FindBike extends Component {
     componentDidMount() {
         const action = { type: 'FETCH_BIKES' };
         this.props.dispatch(action);
+        console.log(this.props.reduxState)
     }
 
     render() {
