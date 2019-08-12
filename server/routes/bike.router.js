@@ -29,7 +29,7 @@ router.get('/reserve', (req, res) => {
     pool.query(sqlText, values)
     .then( (response) => {
         console.log('This is the response.', response);
-        res.send(response.rows[0]);
+        res.send(response.rows);
     })
     .catch( (error) => {
         console.log(`Error selecting bike.`, error);
