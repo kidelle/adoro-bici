@@ -13,7 +13,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 
 const styles = muiBaseTheme => ({
     card: {
-        maxWidth: 300,
+        maxWidth: 500,
         margin: muiBaseTheme.spacing.unit,
         transition: "0.3s",
         boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
@@ -59,7 +59,7 @@ class ReserveBike extends Component {
                 
             
             
-              <Card Key={i} className={classes.card}>
+              <Card key={i} className={classes.card}>
                     <CardActionArea>
                     <CardMedia
                     className={classes.media}
@@ -84,7 +84,7 @@ class ReserveBike extends Component {
                     <Typography
                     className={"MuiTypography--subheading"}
                     variant={"caption"}
-            >
+            >       <br></br>
                     {bikes.rental_rate}
                     </Typography>
                     </CardContent>

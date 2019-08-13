@@ -15,7 +15,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 
 const styles = muiBaseTheme => ({
     card: {
-        maxWidth: 300,
+        maxWidth: 500,
         margin: muiBaseTheme.spacing.unit,
         transition: "0.3s",
         boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
@@ -81,8 +81,8 @@ class SlideShow extends Component {
                             className={"MuiTypography--subheading"}
                             variant={"caption"}
                         >
-                            {bikes.size}
-                        </Typography>
+                            {bikes.bike_size}
+                        </Typography> <br></br>
                         <Typography
                             className={"MuiTypography--subheading"}
                             variant={"caption"}
