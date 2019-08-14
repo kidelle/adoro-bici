@@ -8,6 +8,7 @@ import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import CardActions from '@material-ui/core/CardActions';
 import CardActionArea from '@material-ui/core/CardActionArea';
+import Calendar from 'react-calendar';
 
 
 
@@ -42,7 +43,29 @@ const styles = muiBaseTheme => ({
 
 class ReserveBike extends Component {
 
-    
+    state = {
+        date: new Date(),
+        duration: 0,
+    }
+
+    handleChange = (event) => {
+        console.log(event)
+        this.setState ({
+            date: event
+        });
+    }
+
+    durationChange = (event) => {
+        this.setState({
+            duration: event.target.value
+        });
+    }
+
+    nextPage = (event) => {
+        
+        this.props.dispatch({ type: 'CURRENT_SUMMARY', payload: this.state});
+        this.props.history.push('/summary');
+    }
  
     render () {
         const { classes } = this.props;
@@ -55,8 +78,6 @@ class ReserveBike extends Component {
                 <header>
                     <h1>Reservation Page</h1>
                  </header>
-                 
-                
             
             
               <Card key={i} className={classes.card}>
@@ -90,6 +111,27 @@ class ReserveBike extends Component {
                     </CardContent>
                     </CardActionArea>
                     </Card>
+                        <h1>Choose a date to reserve this bike.</h1>
+                        <div>
+                            <Calendar
+                                onChange={(event) => this.handleChange(event)}
+                                value={this.state.date}
+                            />
+                        </div>
+                        <h1>Choose a duration for your bike rental.</h1>
+                        <div>
+                        <select value={this.state.duration} onChange={(event) => this.durationChange(event)}>
+                            <option value="0">Select Duration</option>
+                            <option value="1">1 Hour</option>
+                            <option value="4">4 Hours</option>
+                            <option value="8">8 Hours</option>
+                            <option value="16">All Day</option>
+                            </select>
+                        
+                        <Button onClick={(event) => this.nextPage(event, bikes)} type="submit" size="large" color="primary">
+                            Complete Reservation
+                        </Button>
+                        </div>
                  
             </>
             
@@ -97,9 +139,10 @@ class ReserveBike extends Component {
             :
             <></>}
             </> 
+            
         )
         
-
+       
     
     }
 
