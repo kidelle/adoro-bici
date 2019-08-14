@@ -84,15 +84,10 @@ class App extends Component {
             they will see the info page instead. */}
             <ProtectedRoute
               exact
-              path="/info"
-              component={InfoPage}
+              path="/user"
+              component={UserPage}
             />
             <ProtectedRoute
-              exact
-              path="/info"
-              component={InfoPage}
-            />
-            <Route
               exact
               path="/user"
               component={UserPage}

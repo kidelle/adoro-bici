@@ -122,10 +122,10 @@ class ReserveBike extends Component {
                         <div>
                         <select value={this.state.duration} onChange={(event) => this.durationChange(event)}>
                             <option value="0">Select Duration</option>
-                            <option value="1">1 Hour</option>
-                            <option value="4">4 Hours</option>
-                            <option value="8">8 Hours</option>
-                            <option value="16">All Day</option>
+                            <option value="1 Hour">1 Hour</option>
+                            <option value="4 Hours">4 Hours</option>
+                            <option value="8 Hours">8 Hours</option>
+                            <option value="All Day">All Day</option>
                             </select>
                         
                         <Button onClick={(event) => this.nextPage(event, bikes)} type="submit" size="large" color="primary">
