@@ -10,9 +10,16 @@ const UserPage = (props) => (
     <h1 id="welcome">
       Welcome, { props.user.username }!
     </h1>
+    <div>
+      <h1>Rental History</h1>
+    </div>
+    
     <p>Your ID is: {props.user.id}</p>
     <LogOutButton className="log-in" />
   </div>
+
+  
+  
 );
 
 // Instead of taking everything from state, we just want the user info.

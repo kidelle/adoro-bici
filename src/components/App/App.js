@@ -15,7 +15,6 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
 import RentalRates from '../RentalRates/RentalRates';
 import HomePage from '../HomePage/HomePage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -36,6 +35,7 @@ class App extends Component {
       <Router>
         <div>
           <Nav />
+          
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
@@ -101,7 +101,10 @@ class App extends Component {
             <Route render={() => <h1>404</h1>} />
           </Switch>
           <Footer />
+          
+
         </div>
+
       </Router>
   )}
 }

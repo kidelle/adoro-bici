@@ -29,10 +29,10 @@ router.get('/reserve', (req, res) => {
     pool.query(sqlText, values)
     .then( (response) => {
         console.log('This is the response.', response);
-        res.send(response.rows);
+        res.send(response.rows[0]);
     })
     .catch( (error) => {
-        console.log(`Error selecting bike.`, error);
+        console.log(`Error selecting bike. Try again later.`, error);
         res.sendStatus(500);
     })
 })
@@ -40,8 +40,29 @@ router.get('/reserve', (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
-
+router.post('/user', (req, res) => {
+    console.log('IN POST', req.body);
+    let rentalsId = req.body.bikeId;
+    let customerId = req.user.id;
+    let rental_start = req.body.date;
+    let duration = req.body.duration;
+    const sqlText = `INSERT INTO rentals(customer_id, bike_id, rental_start, duration)
+                        VALUES($1, $2, $3, $4);`;
+    pool.query(sqlText, 
+    [req.user.id,
+    req.body.bikeId,
+    req.body.date,
+    req.body.duration]
+    ).then( (response) => {
+        console.log('This is the response', response);
+        res.sendStatus(200);
+    })
+    .catch( (error) => {
+        console.log(`ERROR posting bike, try again later.`, error);
+        res.sendStatus(500);
+    })
+    
+    
 });
 
 module.exports = router;

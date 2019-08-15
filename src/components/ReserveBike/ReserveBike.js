@@ -46,6 +46,7 @@ class ReserveBike extends Component {
     state = {
         date: new Date(),
         duration: 0,
+      
     }
 
     handleChange = (event) => {
@@ -61,26 +62,27 @@ class ReserveBike extends Component {
         });
     }
 
-    nextPage = (event) => {
+    nextPage = (event, bikes) => {
         
-        this.props.dispatch({ type: 'CURRENT_SUMMARY', payload: this.state});
+        this.props.dispatch({ type: 'CURRENT_SUMMARY', payload: { ...this.state, bikes: this.props.reduxState.reserveBike,}});
         this.props.history.push('/summary');
     }
  
     render () {
         const { classes } = this.props;
-        
+    
+        let bikes = this.props.reduxState.reserveBike
         return (
             <>
-            {this.props.reduxState.reserveBike ?                
-                this.props.reduxState.reserveBike.map((bikes, i) => 
+            {/* {this.props.reduxState.reserveBike ?                
+                this.props.reduxState.reserveBike.map((bikes, i) =>  */}
                 <>
                 <header>
                     <h1>Reservation Page</h1>
                  </header>
             
             
-              <Card key={i} className={classes.card}>
+              <Card className={classes.card}>
                     <CardActionArea>
                     <CardMedia
                     className={classes.media}
@@ -129,15 +131,15 @@ class ReserveBike extends Component {
                             </select>
                         
                         <Button onClick={(event) => this.nextPage(event, bikes)} type="submit" size="large" color="primary">
-                            Complete Reservation
+                            Add to Reservation
                         </Button>
                         </div>
                  
             </>
             
-                )
+                {/* )
             :
-            <></>}
+            <></>} */}
             </> 
             
         )
