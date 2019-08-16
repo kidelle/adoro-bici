@@ -2,16 +2,14 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-/**
- * GET route template
- */
+// GET for find bike component
 router.get('/', (req, res) => {
     const sqlText = `SELECT * FROM "bikes";`;
     pool.query(sqlText)
-        .then( (response) => {
+        .then((response) => {
             res.send(response.rows);
         })
-        .catch( (error) => {
+        .catch((error) => {
             console.log(`Error getting bikes. Try again later.`, error);
             res.sendStatus(500);
         })
@@ -42,14 +40,14 @@ router.get('/reserve', (req, res) => {
     WHERE "bikes"."id" = $1;`;
     const values = [bikeId]
     pool.query(sqlText, values)
-    .then( (response) => {
-        console.log('This is the response.', response);
-        res.send(response.rows[0]);
-    })
-    .catch( (error) => {
-        console.log(`Error selecting bike. Try again later.`, error);
-        res.sendStatus(500);
-    })
+        .then((response) => {
+            console.log('This is the response.', response);
+            res.send(response.rows[0]);
+        })
+        .catch((error) => {
+            console.log(`Error selecting bike. Try again later.`, error);
+            res.sendStatus(500);
+        })
 })
 
 /**
@@ -63,38 +61,62 @@ router.post('/user', (req, res) => {
     let duration = req.body.duration;
     const sqlText = `INSERT INTO rentals(customer_id, bike_id, rental_start, duration)
                         VALUES($1, $2, $3, $4);`;
-    pool.query(sqlText, 
-    [req.user.id,
-    req.body.bikeId,
-    req.body.date,
-    req.body.duration]
-    ).then( (response) => {
+    pool.query(sqlText,
+        [req.user.id,
+        req.body.bikeId,
+        req.body.date,
+        req.body.duration]
+    ).then((response) => {
         console.log('This is the response', response);
         res.sendStatus(200);
     })
-    .catch( (error) => {
-        console.log(`ERROR posting bike, try again later.`, error);
-        res.sendStatus(500);
-    })
-    
-    
+        .catch((error) => {
+            console.log(`ERROR posting bike, try again later.`, error);
+            res.sendStatus(500);
+        })
+
+
 });
 
+// DELETE reservation
 router.delete('/:id', (req, res) => {
     let id = req.params.id; // id of the thing to delete
     console.log('Delete route called with id of', id);
     const sqlText = `DELETE FROM "rentals" WHERE "id" = $1;`;
     const values = [id]
     pool.query(sqlText, values)
-        .then( (response) => {
+        .then((response) => {
             console.log('This is the DELETE', response);
             res.sendStatus(200);
         })
-        .catch( (error) => {
+        .catch((error) => {
             console.log(`ERROR deleting reservation, try again later.`, error);
             res.sendStatus(500);
         })
-    
+
+})
+
+// EDIT reservation
+router.put('/:id', (req, res) => {
+    const updateRental = req.body;
+    console.log('Edit route called with id of', req.params.id);
+    const sqlText = `UPDATE "rentals"
+    SET "rental_start" = $1, "duration" = $2
+    WHERE id = $3;`;
+    const values = [
+        updateRental.date,
+        updateRental.duration,
+        req.params.id
+    ];
+    pool.query(sqlText, values)
+        .then((response) => {
+            console.log('This is the EDIT', response);
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log(`ERROR editing reservation, try again later.`, error);
+            res.sendStatus(500);
+        })
 })
 
 module.exports = router;

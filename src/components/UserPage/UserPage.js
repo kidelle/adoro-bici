@@ -55,6 +55,12 @@ class UserPage extends Component {
     this.props.dispatch({ type: 'DELETE_RESERVATION', payload: rental })
   }
 
+  handleUpdate = (rental) => {
+    console.log('In EDIT for reservation');
+    this.props.dispatch({ type: 'EDIT_RENTALS', payload: rental })
+    this.props.history.push('/edit');
+  }
+
 
   render() {
     const { classes } = this.props;
@@ -116,7 +122,7 @@ class UserPage extends Component {
               </CardActionArea>
     
               <CardActions>
-                <Button variant="contained" type="submit" size="large" color="secondary">
+                <Button variant="contained" onClick={() => this.handleUpdate(item)} type="submit" size="large" color="secondary">
                   Edit
                         </Button>
                 <Button variant="contained" onClick={() => this.handleChange(item)} type="submit" size="large" color="secondary">

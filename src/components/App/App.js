@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import FindBike from '../FindBike/FindBike';
 import ReserveBike from '../ReserveBike/ReserveBike';
 import Summary from '../Summary/Summary';
+import EditPage from '../EditPage/EditPage';
 
 import './App.css';
 
@@ -89,8 +90,8 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
-              path="/user"
-              component={UserPage}
+              path="/edit"
+              component={EditPage}
             />
             <Route
               exact
