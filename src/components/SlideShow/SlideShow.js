@@ -93,7 +93,7 @@ class SlideShow extends Component {
                     </CardContent>
                     </CardActionArea>
                     <CardActions>
-                        <Button onClick={(event) => this.nextPage(event, bikes)} type="submit"size="large" color="primary">
+                        <Button onClick={(event) => this.nextPage(event, bikes)} variant="contained" type="submit"size="large" color="primary">
                             Reserve This Bike
                         </Button>
                     </CardActions>

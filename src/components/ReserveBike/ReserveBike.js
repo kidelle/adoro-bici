@@ -129,8 +129,10 @@ class ReserveBike extends Component {
                             <option value="8 Hours">8 Hours</option>
                             <option value="All Day">All Day</option>
                             </select>
+                            <br></br>
+                            <br></br>
                         
-                        <Button onClick={(event) => this.nextPage(event, bikes)} type="submit" size="large" color="primary">
+                        <Button onClick={(event) => this.nextPage(event, bikes)} variant="contained" type="submit" size="large" color="primary">
                             Add to Reservation
                         </Button>
                         </div>
