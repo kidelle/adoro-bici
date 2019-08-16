@@ -56,13 +56,13 @@ router.get('/reserve', (req, res) => {
 router.post('/user', (req, res) => {
     console.log('IN POST', req.body);
     let rentalsId = req.body.bikeId;
-    let customerId = req.user.id;
+    let customerId = req.body.id;
     let rental_start = req.body.date;
     let duration = req.body.duration;
     const sqlText = `INSERT INTO rentals(customer_id, bike_id, rental_start, duration)
                         VALUES($1, $2, $3, $4);`;
     pool.query(sqlText,
-        [req.user.id,
+        [req.body.id,
         req.body.bikeId,
         req.body.date,
         req.body.duration]
