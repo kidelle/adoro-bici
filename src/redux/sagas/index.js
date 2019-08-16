@@ -5,6 +5,8 @@ import userSaga from './userSaga';
 import bikeSaga from './bikeSaga';
 import reserveBikeSaga from './reserveBikeSaga';
 import summarySaga from './summarySaga';
+import removerSaga from './removerSaga';
+import rentalsSaga from './rentalsSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,5 +23,7 @@ export default function* rootSaga() {
     bikeSaga(),
     reserveBikeSaga(),
     summarySaga(),
+    removerSaga(),
+    rentalsSaga(),
   ]);
 }

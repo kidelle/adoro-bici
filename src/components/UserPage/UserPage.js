@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
 
 const styles = muiBaseTheme => ({
   card: {
@@ -45,6 +46,16 @@ const styles = muiBaseTheme => ({
 // and then instead of `props.user.username` you could use `user.username`
 class UserPage extends Component {
 
+  componentDidMount(){
+    this.props.dispatch({type: 'FETCH_RENTALS'})
+  }
+
+  handleChange = (rental) => {
+    console.log('In DELETE for reservation');
+    this.props.dispatch({ type: 'DELETE_RESERVATION', payload: rental })
+  }
+
+
   render() {
     const { classes } = this.props;
 
@@ -59,56 +70,67 @@ class UserPage extends Component {
           <h1>Rental History</h1>
         </div>
         <div>
-          <Card className={classes.card}>
-            <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                image={
-                  bikes.image
-                }
-              />
-              <CardContent className={classes.content}>
-                <Typography
-                  className={"MuiTypography--heading"}
-                  variant={"h6"}
-                  gutterBottom
-                >
-                  {bikes.description}
-                </Typography>
-                <Typography
-                  className={"MuiTypography--subheading"}
-                  variant={"caption"}
-                >
-                  {bikes.bike_size}
-                </Typography>
-                <Typography
-                  className={"MuiTypography--subheading"}
-                  variant={"caption"}
-                >       <br></br>
-                  {bikes.rental_rate}
-                </Typography>
-                {/* <Typography
-                                    className={"MuiTypography--subheading"}
-                                    variant={"caption"}
-                                >
-                                    {this.props.reduxState.summary.date}
-                                </Typography>
-                                <Typography
-                                    className={"MuiTypography--subheading"}
-                                    variant={"caption"}
-                                >
-                                    {this.props.reduxState.summary.duration}
-                                </Typography> */}
-              </CardContent>
-            </CardActionArea>
-          </Card>
+          {this.props.reduxState.rentals.map(item =>
 
+            <Card className={classes.card}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={
+                    item.image
+                  }
+                />
+                <CardContent className={classes.content}>
+                  <Typography
+                    className={"MuiTypography--heading"}
+                    variant={"h6"}
+                    gutterBottom
+                  >
+                    {item.description}
+                  </Typography>
+                  <Typography
+                    className={"MuiTypography--subheading"}
+                    variant={"caption"}
+                  >
+                    {item.bike_size}
+                  </Typography>
+                  <Typography
+                    className={"MuiTypography--subheading"}
+                    variant={"caption"}
+                  >       <br></br>
+                    {item.rental_rate}
+                  </Typography>
+                  <Typography
+                    className={"MuiTypography--subheading"}
+                    variant={"caption"}
+                  > <br></br>
+                    {item.rental_start}
+                  </Typography>
+                  <Typography
+                    className={"MuiTypography--subheading"}
+                    variant={"caption"}
+                  > <br></br>
+                    {item.duration}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+    
+              <CardActions>
+                <Button variant="contained" type="submit" size="large" color="secondary">
+                  Edit
+                        </Button>
+                <Button variant="contained" onClick={() => this.handleChange(item)} type="submit" size="large" color="secondary">
+                  Delete
+                        </Button>
+              </CardActions>
+            </Card>
+          )}
           <p>{JSON.stringify(this.props.reduxState.summary.date)}</p>
           <p>{this.props.reduxState.summary.duration}</p>
         </div>
         <div></div>
-        <Button variant="contained" type="submit" size="large" color="secondary">Edit</Button>
-        <Button variant="contained" type="submit" size="large" color="secondary">Delete</Button>
+        
+       
         <p>Your ID is: {this.props.reduxState.user.id}</p>
         <LogOutButton className="log-in" />
       </div>
@@ -121,12 +143,12 @@ class UserPage extends Component {
 }
 
 
-  // Instead of taking everything from state, we just want the user info.
-  // if you wanted you could write this code like this:
-  // const mapStateToProps = ({user}) => ({ user });
-  const mapStateToProps = reduxState => ({
-   reduxState,
-  });
+// Instead of taking everything from state, we just want the user info.
+// if you wanted you could write this code like this:
+// const mapStateToProps = ({user}) => ({ user });
+const mapStateToProps = reduxState => ({
+  reduxState,
+});
 
-  // this allows us to use <App /> in index.js
-  export default withStyles(styles)(connect(mapStateToProps)(UserPage));
+// this allows us to use <App /> in index.js
+export default withStyles(styles)(connect(mapStateToProps)(UserPage));

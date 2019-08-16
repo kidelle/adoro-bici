@@ -5,6 +5,7 @@ import user from './userReducer';
 import bikes from './bikeReducer';
 import reserveBike from './reserveBikeReducer';
 import summary from './summaryReducer';
+import rentals from './rentalsReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   bikes,
   reserveBike,
   summary,
+  rentals,
 });
 
 export default rootReducer;
