@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import CardActionArea from '@material-ui/core/CardActionArea';
+import Swal from 'sweetalert2';
 
 const styles = muiBaseTheme => ({
     card: {
@@ -51,7 +52,13 @@ class Summary extends Component {
         Axios.post('/bikes/user', payload)
         .then( response => {
             this.props.dispatch({ type: 'SET_ORDER', payload: response.data });
+            Swal.fire(
+                'Success!',
+                'Your reservation has been confirmed!',
+                'success'
+            )
         })
+        
         .catch( error => {
             alert('Could not confirm reservation at this time. Try again later.');
             console.log('Error on POST', error);
