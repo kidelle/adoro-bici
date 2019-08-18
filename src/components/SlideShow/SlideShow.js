@@ -12,10 +12,13 @@ import CardActions from '@material-ui/core/CardActions';
 import CardActionArea from '@material-ui/core/CardActionArea';
 
 
+
 const styles = muiBaseTheme => ({
     card: {
         maxWidth: 500,
-        margin: muiBaseTheme.spacing.unit,
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginTop: "15px",
         transition: "0.3s",
         boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
         "&:hover": {
@@ -30,7 +33,7 @@ const styles = muiBaseTheme => ({
         padding: muiBaseTheme.spacing.unit * 3
     },
     divider: {
-        margin: `${muiBaseTheme.spacing.unit * 3}px 0`
+        margin: `${muiBaseTheme.spacing.unit * 3}px 3`
     },
     heading: {
         fontWeight: "bold"
@@ -38,8 +41,9 @@ const styles = muiBaseTheme => ({
     subHeading: {
         lineHeight: 1.8
     },
-   
 });
+
+
 
 
 
@@ -58,7 +62,7 @@ class SlideShow extends Component {
         return (
             this.props.reduxState.bikes.map((bikes, i) =>
 
-
+                
                 <Card key={i} className={classes.card}>
                     <CardActionArea>
                     <CardMedia
@@ -97,6 +101,9 @@ class SlideShow extends Component {
                         </Button>
                     </CardActions>
                 </Card>
+               
+               
+            
 
 
             )

@@ -14,7 +14,9 @@ import Calendar from 'react-calendar';
 const styles = muiBaseTheme => ({
     card: {
         maxWidth: 500,
-        margin: muiBaseTheme.spacing.unit,
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginTop: "15px",
         transition: "0.3s",
         boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
         "&:hover": {
@@ -112,16 +114,16 @@ class ReserveBike extends Component {
                     </CardContent>
                     </CardActionArea>
                     </Card>
-                        <h1>Choose a date to reserve this bike.</h1>
+                        <h1 className="choose-date">Choose a date to reserve this bike.</h1>
                         <div>
-                            <Calendar
+                            <Calendar className="calendar"
                                 onChange={(event) => this.handleChange(event)}
                                 value={this.state.date}
                             />
                         </div>
-                        <h1>Choose a duration for your bike rental.</h1>
+                        <h1 className="duration">Choose a duration for your bike rental.</h1>
                         <div>
-                        <select value={this.state.duration} onChange={(event) => this.durationChange(event)}>
+                        <select className="selector" value={this.state.duration} onChange={(event) => this.durationChange(event)}>
                             <option value="0">Select Duration</option>
                             <option value="1 Hour">1 Hour</option>
                             <option value="4 Hours">4 Hours</option>
@@ -131,7 +133,7 @@ class ReserveBike extends Component {
                             <br></br>
                             <br></br>
                         
-                        <Button onClick={(event) => this.nextPage(event, bikes)} variant="contained" type="submit" size="large" color="primary">
+                        <Button className="add-button" onClick={(event) => this.nextPage(event, bikes)} variant="contained" type="submit" size="large" color="primary">
                             Add to Reservation
                         </Button>
                         </div>

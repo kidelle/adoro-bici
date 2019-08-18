@@ -1,6 +1,10 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
+    background-color: #d4746c;
+    text-align: center;
+    color: #f2f2f2;
+    
 }
 
 .alert {
@@ -9,7 +13,7 @@ body {
 }
 
 form {
-    background-color: #dbd5d5;
+    background-color: #8aa29e;
     width: 30%;
     height: 250px;
     margin: 20px auto;
@@ -47,3 +51,63 @@ input {
     border-bottom:1px solid #444; 
     cursor: pointer;
 }
+
+.home-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 75px;
+    color: #f2f2f2;
+
+}
+
+.home-container {
+    float: left;
+    padding-left: 500px;
+    padding-top: 50px;
+
+}
+
+.about {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    color: #f2f2f2;
+    
+}
+
+.about-container {
+    float: right;
+    text-align: left;
+    max-width: 350px;
+    margin-top: 125px;
+    margin-right: 550px;
+    
+}
+
+.footer-div {
+    text-align: left;
+    padding-top: 600px;
+    padding-left: 20px;
+    margin-bottom: 2px;
+}
+
+.about-image {
+    padding-top: 50px;
+}
+
+
+.home-adoro {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    color: #f2f2f2;
+    
+  
+}
+
+.sub-head {
+    font-family: palatino;
+    font-size: 25px;
+}
+
+.calendar {
+    margin: auto;
+}
+

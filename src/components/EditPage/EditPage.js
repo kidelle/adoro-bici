@@ -14,7 +14,9 @@ import Calendar from 'react-calendar';
 const styles = muiBaseTheme => ({
     card: {
         maxWidth: 500,
-        margin: muiBaseTheme.spacing.unit,
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginTop: "15px",
         transition: "0.3s",
         boxShadow: "0 8px 40px -12px rgba(0,0,0,0.3)",
         "&:hover": {
@@ -76,7 +78,7 @@ class EditBike extends Component {
                 this.props.reduxState.reserveBike.map((bikes, i) =>  */}
                 <>
                     <header>
-                        <h1>Edit Page</h1>
+                        <h1>Edit Your Reservation</h1>
                     </header>
 
 
@@ -113,7 +115,7 @@ class EditBike extends Component {
                     </Card>
                     <h1>Choose a date to reserve this bike.</h1>
                     <div>
-                        <Calendar
+                        <Calendar className="calendar"
                             onChange={(event) => this.handleChange(event)}
                             value={this.state.date}
                         />
