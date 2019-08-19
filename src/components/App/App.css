@@ -13,7 +13,7 @@ body {
 }
 
 form {
-    background-color: #8aa29e;
+    background-color: #00acb0;
     width: 30%;
     height: 250px;
     margin: 20px auto;
@@ -61,7 +61,7 @@ input {
 
 .home-container {
     float: left;
-    padding-left: 500px;
+    padding-left: 400px;
     padding-top: 50px;
 
 }
@@ -78,7 +78,7 @@ input {
     text-align: left;
     max-width: 350px;
     margin-top: 125px;
-    margin-right: 550px;
+    margin-right: 425px;
     
 }
 

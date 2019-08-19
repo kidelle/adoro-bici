@@ -8,7 +8,9 @@ import React from 'react';
 const AboutPage = () => (
   <div>
     <div className="about-image">
-      <img src="/images/bikes_sand.jpg" alt="bikes" height="300" width="1100"></img>
+      <img src="/images/bikes_sand.jpg" alt="bikes" height="300" width="400"></img>
+      <img src="/images/vespas.jpg" alt="bikes" height="300" width="400"></img>
+      <img src="/images/bike_plants.jpg" alt="bikes" height="300" width="400"></img>
     </div>
     <div className="home-container">
       <h1 className="home-title">About Us...</h1>
