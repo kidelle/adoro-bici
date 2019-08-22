@@ -93,7 +93,7 @@ class App extends Component {
               path="/edit"
               component={EditPage}
             />
-            <Route
+            <ProtectedRoute
               exact
               path="/summary"
               component={Summary}
