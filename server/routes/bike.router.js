@@ -19,8 +19,9 @@ router.get('/', (req, res) => {
 router.get('/rentals', (req, res) => {
     const sqlText = `SELECT "rentals"."id", "rentals"."customer_id", "rentals"."bike_id", "rentals"."rental_start", "rentals"."duration", "bikes"."description", "bikes"."bike_size", "bikes"."image", "bikes"."rental_rate"
     FROM "rentals"
-    JOIN "bikes" ON "bikes"."id" = "rentals"."bike_id";`;
-    pool.query(sqlText)
+    JOIN "bikes" ON "bikes"."id" = "rentals"."bike_id"
+    WHERE "rentals"."customer_id" = $1;`;
+    pool.query(sqlText, [req.user.id])
         .then((response) => {
             res.send(response.rows);
         })
@@ -55,14 +56,10 @@ router.get('/reserve', (req, res) => {
  */
 router.post('/user', (req, res) => {
     console.log('IN POST', req.body);
-    let rentalsId = req.body.bikeId;
-    let customerId = req.body.id;
-    let rental_start = req.body.date;
-    let duration = req.body.duration;
     const sqlText = `INSERT INTO rentals(customer_id, bike_id, rental_start, duration)
                         VALUES($1, $2, $3, $4);`;
     pool.query(sqlText,
-        [req.body.id,
+        [req.user.id,
         req.body.bikeId,
         req.body.date,
         req.body.duration]

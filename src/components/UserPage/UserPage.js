@@ -133,8 +133,7 @@ class UserPage extends Component {
               </CardActions>
             </Card>
           )}
-          <p>{JSON.stringify(this.props.reduxState.summary.date)}</p>
-          <p>{this.props.reduxState.summary.duration}</p>
+         
         </div>
         <div></div>
         
