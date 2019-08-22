@@ -1,6 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 // GET for find bike component
 router.get('/', (req, res) => {
@@ -32,7 +33,7 @@ router.get('/rentals', (req, res) => {
 });
 
 // GET for details of bike
-router.get('/reserve', (req, res) => {
+router.get('/reserve', rejectUnauthenticated, (req, res) => {
     console.log(req.query);
     let bikeId = req.query.bike_id;
     const sqlText = `SELECT "bikes"."id", "bikes"."description", "bikes"."bike_size", "bikes"."image",
@@ -54,7 +55,7 @@ router.get('/reserve', (req, res) => {
 /**
  * POST route template
  */
-router.post('/user', (req, res) => {
+router.post('/user', rejectUnauthenticated, (req, res) => {
     console.log('IN POST', req.body);
     const sqlText = `INSERT INTO rentals(customer_id, bike_id, rental_start, duration)
                         VALUES($1, $2, $3, $4);`;
@@ -76,7 +77,7 @@ router.post('/user', (req, res) => {
 });
 
 // DELETE reservation
-router.delete('/:id', (req, res) => {
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
     let id = req.params.id; // id of the thing to delete
     console.log('Delete route called with id of', id);
     const sqlText = `DELETE FROM "rentals" WHERE "id" = $1;`;
@@ -94,7 +95,7 @@ router.delete('/:id', (req, res) => {
 })
 
 // EDIT reservation
-router.put('/:id', (req, res) => {
+router.put('/:id', rejectUnauthenticated, (req, res) => {
     const updateRental = req.body;
     console.log('Edit route called with id of', req.params.id);
     const sqlText = `UPDATE "rentals"
