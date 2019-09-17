@@ -61,9 +61,9 @@ Coming Soon
 
 ## Authors
 
-* Built By:
+* Built By: Danielle Martain
 
-Danielle Martain
+
 
 
 ## Acknowledgments
